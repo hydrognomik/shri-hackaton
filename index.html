@@ -36,6 +36,17 @@
       }
     }
 
+    const stack = [];
+    const treeTraversalLevel = node => {
+      stack.push(node);
+
+      for (let n of stack) {
+        console.log(n.v);
+        n.l && stack.push(n.l);
+        n.r && stack.push(n.r);
+      }
+    }
+
     const treeTraversal = node => {
       node.l && treeTraversal(node.l);
       console.log(node.v);
@@ -110,7 +121,7 @@
       return arr;
     }
 
-    treeTraversal(TREE);
+    treeTraversalLevel(TREE);
   </script>
 </body>
 </html>
