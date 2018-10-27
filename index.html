@@ -8,8 +8,41 @@
 </head>
 <body>
   <script>
-    // Selection sort
+    // Test brackets
 
+    const BRAKCETS = '(a){[<bc>]}';
+    const bracketPairs = {
+      ')': '(',
+      '}': '{',
+      ']': '[',
+      '>': '<'
+    };
+
+    const isBracketOpened = {
+      '(': true,
+      '{': true,
+      '[': true,
+      '<': true
+    }
+
+    const testBrackets = input => {
+      const arr = input.split('');
+      const stack = [];
+
+      arr.forEach(sym => {
+        if (stack.length && stack[stack.length - 1] === bracketPairs[sym]) {
+          stack.pop();
+        } else if (isBracketOpened[sym]) {
+          stack.push(sym);
+        }
+      });
+
+      console.log(stack);
+      return !stack.length;
+    }
+
+    // Selection sort
+    // Не исопльзовать второй массив
     const selectionSort = input => {
       const arr = input.slice();
       const sorted = [];
@@ -44,7 +77,7 @@
     }
 
     const INPUT = [123123,7,4,2,5,6,0,647];
-    const res = selectionSort(INPUT);
+    const res = testBrackets(BRAKCETS);
 
     console.log(res);
   </script>
