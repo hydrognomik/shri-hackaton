@@ -8,13 +8,29 @@
 </head>
 <body>
   <script>
+    // Selection sort
+
+    const selectionSort = input => {
+      const arr = input.slice();
+      const sorted = [];
+
+      input.forEach(i => {
+        const min = Math.min(...arr);
+
+        sorted.push(min);
+        arr.splice(arr.indexOf(min), 1);
+      });
+
+      return sorted;
+    }
+
     // Bubble sort
 
     const bubbleSort = input => {
       const arr = input.slice();
 
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
+      for (let i in arr) {
+        for (let j in arr) {
           if (arr[i] < arr[j]) {
             const temp = arr[j];
 
@@ -28,7 +44,7 @@
     }
 
     const INPUT = [123123,7,4,2,5,6,0,647];
-    const res = bubbleSort(INPUT);
+    const res = selectionSort(INPUT);
 
     console.log(res);
   </script>
