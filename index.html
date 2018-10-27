@@ -8,6 +8,40 @@
 </head>
 <body>
   <script>
+    // Tree traversal
+
+    const TREE = {
+      v: 'A',
+      l: {
+        v: 'B',
+        l: {
+          v: 'C',
+          l: null,
+          r: null
+        },
+        r: {
+          v: 'D',
+          l: null,
+          r: null
+        }
+      },
+      r: {
+        v: 'E',
+        l: {
+          v: 'F',
+          l: null,
+          r: null
+        },
+        r: null
+      }
+    }
+
+    const treeTraversal = node => {
+      node.l && treeTraversal(node.l);
+      console.log(node.v);
+      node.r && treeTraversal(node.r);
+    }
+
     // Test brackets
 
     const BRAKCETS = '(a){[<bc>]}';
@@ -76,10 +110,7 @@
       return arr;
     }
 
-    const INPUT = [123123,7,4,2,5,6,0,647];
-    const res = testBrackets(BRAKCETS);
-
-    console.log(res);
+    treeTraversal(TREE);
   </script>
 </body>
 </html>
